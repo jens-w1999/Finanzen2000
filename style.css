@@ -75,3 +75,51 @@ body {
     width: 100%;
 
     }
+
+
+
+.container_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+.form {
+    width: 300px;
+    padding: 16px;
+    background-color: rgb(192, 192, 192);
+    border-radius: 8px;
+}
+
+.form__title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.form__group {
+    margin-bottom: 16px;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.form__input {
+    width: 100%;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+}
+
+.form__button {
+    width: 100%;
+    padding: 12px;
+    background-color:rgb(4,0,59);
+    color: rgb(255, 153, 13);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
