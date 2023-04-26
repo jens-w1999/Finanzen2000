@@ -1,0 +1,57 @@
+/* Stil für die Webseite 
+Farben:
+    Blau: rgb(4,0,59)
+    Orange: rgb(255, 153, 13)
+    Grau: rgb(192, 192, 192)
+  
+Schriftart:
+      Logo: Cinzel
+
+*/
+
+  #header {
+    padding: 10px;
+    background-color: rgb(4,0,59);
+  }
+  #header img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  #header h1 {
+    color: rgb(255, 153, 13);
+    font-family: "Cinzel";
+    font-size: 50px;
+    
+  }
+  #logout{
+    content: center;
+    background-color: rgb(192, 192, 192);
+    margin-top: 25px;
+  }
+  .navbar {
+    background-color: rgb(192, 192, 192);
+    font-weight: bold;
+  }
+
+  .card {
+    height: 250px; /* Höhe der Karte*/
+    margin-top: 20px;
+  }
+
+  .card-img-top{
+  width: 100px; /* Breite des Bildes*/
+  height: 100px; /* Höhe des Bildes*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .card-title{
+    text-decoration: underline;
+  }
+
+  #footer {
+    background-color: rgb(4,0,59);
+    color: rgb(255, 153, 13);
+    height: 100px;
+    }
