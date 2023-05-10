@@ -8,7 +8,7 @@
 
 ## Developementumgebung
 ### Virtual Environment
-Da eine Virtuelle Entwicklungsumgebung Vorteile bietet wie z.B. dass man Bibliotheken nicht Lokal installieren muss. Hierfür einfach im Terminal in den Ordner [./authentification](./authentification/) navigieren und die Virtuelle Umgebung erzeugen mit:
+Da eine Virtuelle Entwicklungsumgebung Vorteile bietet wie z.B. dass man Bibliotheken nicht Lokal installieren muss. Hierfür einfach im Terminal die Virtuelle Umgebung erzeugen mit:
 ```ps
 py -m venv venv
 ```
@@ -28,14 +28,10 @@ Set-ExecutionPolicy RemoteSigned
 ```
 
 #### **Benötigte Pakete**
-Da wir einige Packete benötigen, müssen wir diese nun in der virtuellen Umgebung installieren. Hierfür folgende Pakete installieren:
+Um die benötigten Pakete zu installieren, gebe in der virtuellen Umgebung folgendes ein:
 ```ps
-pip install django
-pip install django_crispy_forms
+pip install -r requirements.txt
 ```
-
-**Prüfen ob es funktioniert hat**
-Um zu überprüfen, ob die Umgebung nun bereit ist, kann der befehl `django-admin` eingegeben werden und falls dann alle vorhandenen Kommandos gelistet werden und keine Fehlermeldung kommt, läuft alles. 
 
 ### Webserver starten
 Um eine lokale Serverumgebung zu starten muss in den Ordner [./authentification/authsystem](./authentification/authsystem) navigiert werden und dort folgender Befehl ausgeführ werden
