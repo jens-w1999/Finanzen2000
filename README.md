@@ -36,5 +36,5 @@ pip install -r requirements.txt
 ### Webserver starten
 Um eine lokale Serverumgebung zu starten muss in den Ordner [./authentification/authsystem](./authentification/authsystem) navigiert werden und dort folgender Befehl ausgeführ werden
 ```cmd
-python manage.py runserver
+python app.py
 ```
