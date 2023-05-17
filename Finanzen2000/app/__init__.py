@@ -13,7 +13,7 @@ app.config['MYSQL_PASSWORD'] = 'Ich#Bin#Eine#Robbe13579'
 app.config['MYSQL_DB'] = 'budgetmaster'
 
 # MySQL-Verbindung erstellen
-mysql = MySQL(app)
+db = MySQL(app)
 
 
 from app import views

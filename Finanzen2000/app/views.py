@@ -1,12 +1,12 @@
 """Routing of the Webapp
 """
-from . import app, mysql
+from . import app, db
 from flask import render_template
 
 # Beispielroute, um Daten aus der Datenbank abzurufen
 @app.route('/')
 def index():
-    cur = mysql.connection.cursor()
+    cur = db.connection.cursor()
     cur.execute("SELECT * FROM Users")  # Ersetzen Sie "table_name" durch den tatsächlichen Tabellennamen
     data = cur.fetchall()
     cur.close()
