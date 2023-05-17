@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Eigene CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body style="background-color: #f8f9fa;">
@@ -16,7 +16,7 @@
     <div class="row ">
         <div class="col-6"><!-- col-6 = 2 Spalten -->
             <div class="d-flex align-items-center">
-                <img src="../../static/users/Icon.png" alt="Logo" class="mr-2">    
+                <img src="{{ url_for('static', filename='img/icon.png') }}" alt="Logo" class="mr-2">    
                 <h1 class="m-0">BUGET MASTER</h1>                                                           
             </div>
         </div>
@@ -41,16 +41,16 @@
                       <a class="nav-link" href="#">Home</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="overview.html">Übersicht</a>
+                      <a class="nav-link" href="{{ url_for('overview') }}">Übersicht</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="income.html">Einnahmen</a>
+                      <a class="nav-link" href="{{ url_for('income') }}">Einnahmen</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="cost.html">Ausgaben</a>
+                      <a class="nav-link" href="{{ url_for('cost') }}">Ausgaben</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="asset-management.html">Asset Management</a>
+                      <a class="nav-link" href="{{ url_for('assetManagement') }}">Asset Management</a>
                   </li>
               </ul>
           </div>
@@ -62,7 +62,7 @@
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img src="img/Logo.png" alt="Image 1" class="card-img-top">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Image 1" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">Budget Master</h5>
                         <p class="card-text">Die Entstehung vom Buget Master</p>

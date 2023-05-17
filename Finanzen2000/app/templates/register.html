@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Eigene CSS -->
-    <link rel="stylesheet" href="../../static/users/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body style="background-color: #f8f9fa;">
@@ -15,7 +15,7 @@
       <div class="row justify-content-center">
           <div class="col-md-6"> <!-- 1. Spalte mit Logo-->
               <div class="card mt-5" style="border-radius: 1rem; height: 85%; margin-right: -15px;"> <!-- height ändert die Höhe/Größe vom Logo-->
-                  <img src="../../static/users/Logo.png" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
+                  <img src="{{ url_for('static', filename='img/logo.png') }}" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
               </div>
           </div>
           <div class="col-md-6"><!-- 2. Spalte mit Login-->
@@ -55,7 +55,7 @@
                               <button class="btn btn-dark btn-lg btn-block" type="button">Registrieren</button>
                           </div>
 
-                          <p class="mb-4" style="color: rgb(4,0,59);">Haben Sie bereits ein Account ?<a href="login.html" style="color: rgb(4,0,59);">Hier Einloggen </a></p>
+                          <p class="mb-4" style="color: rgb(4,0,59);">Haben Sie bereits ein Account ?<a href="{{ url_for('login') }}" style="color: rgb(4,0,59);">Hier Einloggen </a></p>
                       </form>
                   </div>
               </div>
