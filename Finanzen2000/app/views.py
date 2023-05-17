@@ -1,11 +1,20 @@
 """Routing of the Webapp
 """
-from app import app
+from . import app, mysql
 from flask import render_template
 
-@app.route("/")
-def login():
-    return render_template("login.html")
+# Beispielroute, um Daten aus der Datenbank abzurufen
+@app.route('/')
+def index():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM Users")  # Ersetzen Sie "table_name" durch den tatsächlichen Tabellennamen
+    data = cur.fetchall()
+    cur.close()
+    return str(data)
+
+#@app.route("/")
+#def login():
+#    return render_template("login.html")
 
 @app.route("/home")
 def home():
