@@ -21,7 +21,7 @@
           <div class="col-md-6"><!-- 2. Spalte mit Login-->
               <div class="card mt-5" style="border-radius: 0 1rem 1rem 0; height: 85%; margin-left: -15px;">
                   <div class="card-body p-4 p-lg-5">
-                      <form>
+                      <form action="{{urlfor('login')}}" method="post">
                           <div class="d-flex align-items-center mb-2">
                               <span class="h1">Registrieren</span>
                           </div>
@@ -31,7 +31,7 @@
                                 <label class="form-label">Vorname</label>
                             </div>
                             <div class="col-md-6">    
-                              <input id="surename" class="form-control form-control-lg" />
+                              <input id="surname" class="form-control form-control-lg" />
                               <label class="form-label">Nachname</label>
                             </div>
                           </div>
@@ -47,7 +47,7 @@
                           </div>
 
                           <div class="mb-2">
-                            <input type="password" id="password2" class="form-control form-control-lg" />
+                            <input type="password" id="password_confirm" class="form-control form-control-lg" />
                             <label class="form-label">Passwort wiederholen</label>
                          </div>
 

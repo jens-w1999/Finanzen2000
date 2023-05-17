@@ -1,7 +1,7 @@
 
 from flask import Flask
-from . import database
 from flask_mysqldb import MySQL
+
 
 app = Flask(__name__)
 
