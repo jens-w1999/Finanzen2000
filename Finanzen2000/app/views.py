@@ -26,7 +26,7 @@ def login():
         record = cursor.fetchone()
 
         if record:
-            session['authentificated']= True
+            session['loggedin']= True
             session['email']= record[4]
             flash('login successful!')
             return redirect(url_for('home'))
@@ -34,6 +34,12 @@ def login():
             msg='Falsche E-Mail oder Passwort. Versuchs nochmal.'
             flash('Invalid login credentials')
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('email', None)
+    return redirect(url_for('login'))
 
 @app.route("/home")
 def home():
