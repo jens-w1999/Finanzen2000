@@ -1,7 +1,7 @@
 """Routing of the Webapp
 """
 from . import app, db
-from flask import Flask,render_template, request, redirect, session, url_for
+from flask import Flask,render_template, request, redirect, session, url_for, flash
 
 # Set secret key for sessions
 app.secret_key = b'e2699aed8897f2c4e91eee2cd238adcec98763a1db315653adca2ad056badc9a192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
@@ -28,9 +28,11 @@ def login():
         if record:
             session['authentificated']= True
             session['email']= record[4]
+            flash('login successful!')
             return redirect(url_for('home'))
         else:
             msg='Falsche E-Mail oder Passwort. Versuchs nochmal.'
+            flash('Invalid login credentials')
     return render_template('login.html')
 
 @app.route("/home")
