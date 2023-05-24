@@ -23,11 +23,21 @@ Schriftart:
     font-size: 50px;
     
   }
+
+  /*Logout Button*/
   #logout{
     content: center;
     background-color: rgb(192, 192, 192);
     margin-top: 25px;
   }
+
+    /*Login Button*/
+    #btn_login{
+      content: center;
+      margin-top: 25px;
+    }
+
+
   .navbar {
     background-color: rgb(192, 192, 192);
     font-weight: bold;
@@ -48,6 +58,13 @@ Schriftart:
 
   .card-title{
     text-decoration: underline;
+  }
+
+
+  #card_Index{
+    height: 600px; /* Höhe der Karte der Index Seite*/
+    margin-top: 20px;;
+    font-size: 17px;
   }
 
   #footer {

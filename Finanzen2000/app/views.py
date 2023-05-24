@@ -8,12 +8,12 @@ app.secret_key = b'e2699aed8897f2c4e91eee2cd238adcec98763a1db315653adca2ad056bad
 
 # Beispielroute, um Daten aus der Datenbank abzurufen
 @app.route('/testdb')
-def index():
-    cursor = db.connection.cursor()
-    cursor.execute("SELECT * FROM Users")  # Ersetzen Sie "table_name" durch den tatsächlichen Tabellennamen
-    data = cursor.fetchall()
-    cursor.close()
-    return str(data)
+def testdb():
+   cursor = db.connection.cursor()
+   cursor.execute("SELECT * FROM Users")  # Ersetzen Sie "table_name" durch den tatsächlichen Tabellennamen
+   data = cursor.fetchall()
+   cursor.close()
+   return str(data)
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -40,6 +40,10 @@ def logout():
     session.pop('loggedin', None)
     session.pop('email', None)
     return redirect(url_for('login'))
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 @app.route("/home")
 def home():
