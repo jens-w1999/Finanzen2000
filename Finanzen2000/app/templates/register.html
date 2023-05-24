@@ -21,38 +21,38 @@
           <div class="col-md-6"><!-- 2. Spalte mit Login-->
               <div class="card mt-5" style="border-radius: 0 1rem 1rem 0; height: 85%; margin-left: -15px;">
                   <div class="card-body p-4 p-lg-5">
-                      <form action="{{url_for('login')}}" method="post">
+                      <form method="POST" action="/register">
                           <div class="d-flex align-items-center mb-2">
                               <span class="h1">Registrieren</span>
                           </div>
                           <div class="row mb-2"> <!-- erzeugt eine Reihe-->
                             <div class="col-md-6"> <!-- erzeugt eine Spalte -->
-                                <input id="forename" class="form-control form-control-lg" />
+                                <input id="forename" name="forename" class="form-control form-control-lg" />
                                 <label class="form-label">Vorname</label>
                             </div>
                             <div class="col-md-6">    
-                              <input id="surname" class="form-control form-control-lg" />
+                              <input id="surname" name="surname" class="form-control form-control-lg" />
                               <label class="form-label">Nachname</label>
                             </div>
                           </div>
 
                           <div class="mb-2">
-                            <input type="email" id="email" class="form-control form-control-lg" />
+                            <input type="email" id="email" name="email" class="form-control form-control-lg" />
                             <label class="form-label">Email Adresse</label>
                             </div>
 
                           <div class="mb-2">
-                              <input type="password" id="password" class="form-control form-control-lg" />
+                              <input type="password" id="password" name="password" class="form-control form-control-lg" />
                               <label class="form-label">Passwort</label>
                           </div>
 
                           <div class="mb-2">
-                            <input type="password" id="password_confirm" class="form-control form-control-lg" />
+                            <input type="password" id="password_confirm" name="password_confirm" class="form-control form-control-lg" />
                             <label class="form-label">Passwort wiederholen</label>
                          </div>
 
                           <div class="mb-2">
-                              <button class="btn btn-dark btn-lg btn-block" type="button">Registrieren</button>
+                              <button class="btn btn-dark btn-lg btn-block" type="submit" value="Register">Registrieren</button>
                           </div>
 
                           <p class="mb-4" style="color: rgb(4,0,59);">Haben Sie bereits ein Account ?<a href="{{ url_for('login') }}" style="color: rgb(4,0,59);">Hier Einloggen </a></p>
