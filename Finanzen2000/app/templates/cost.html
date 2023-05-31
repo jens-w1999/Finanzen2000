@@ -107,6 +107,32 @@
                         </tr>
                     </tbody>
                     </table>
+                    <table border>
+                        <thead>
+                        <tr>
+                            <th>Date (From)</th>
+                            <th>Date (To)</th>
+                            <th>Typ_ID</th>
+                            <th>Categorie_ID</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Update_Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in output_data %}
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>{{row[4]}}</td>
+                                    <td>{{row[5]}}</td>
+                                    <td>{{row[6]}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
