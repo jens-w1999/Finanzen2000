@@ -3,9 +3,19 @@
 from . import app, db
 from flask import Flask,render_template, request, redirect, session, url_for, flash
 from flask_mysqldb import MySQL
+import bcrypt
 
 # Set secret key for sessions
 app.secret_key = b'e2699aed8897f2c4e91eee2cd238adcec98763a1db315653adca2ad056badc9a192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
+
+def get_hashed_password(plain_text_password):
+    # Hash a password for the first time
+    #   (Using bcrypt, the salt is saved into the hash itself)
+    return bcrypt.hashpw(plain_text_password, bcrypt.gensalt())
+
+def check_password(plain_text_password, hashed_password):
+    # Check hashed password. Using bcrypt, the salt is saved into the hash itself
+    return bcrypt.checkpw(plain_text_password, hashed_password)
 
 # Beispielroute, um Daten aus der Datenbank abzurufen
 @app.route('/testdb')
@@ -17,19 +27,22 @@ def testdb():
    return str(data)
 
 @app.route("/login", methods=['GET','POST'])
-def login():
+def login():    
     cursor = db.connection.cursor()
-    query = 'SELECT * FROM Users WHERE email=%s AND password=%s',(email, password)
     if request.method=='POST':
         email = request.form['email']
         password = request.form['password']
-        cursor.execute(query)
+        encrypted_password = password.encode('utf-8')
+        query = 'SELECT * FROM Users WHERE email=%s'
+        cursor.execute(query, (email,))
         record = cursor.fetchone()
 
-        if record:
+        # check is password is correct
+        if check_password(encrypted_password, record[2].encode('utf-8')):
             session['loggedin']= True
             session['email']= record[4]
             flash('login successful!')
+            cursor.close()
             return redirect(url_for('home'))
         else:
             flash('Invalid login credentials')
@@ -60,6 +73,10 @@ def register():
         surname = request.form.get('surname')
         cursor = db.connection.cursor()
 
+        # hash password
+        encoded_password = password.encode('utf-8')
+        h_password = get_hashed_password(encoded_password)
+
         # test if user already exists
         test_user_query = 'SELECT COUNT(*) FROM Users WHERE email = %s'
         cursor.execute(test_user_query, (email,))
@@ -86,7 +103,7 @@ def register():
             return render_template('register.html')
         else:
             query = 'INSERT INTO Users (id, email, password, forename, surname) VALUES (NULL, %s, %s, %s, %s)'
-            values = (email, password, forename, surname)
+            values = (email, h_password, forename, surname)
             cursor.execute(query, values)
             db.connection.commit()
             cursor.close()
