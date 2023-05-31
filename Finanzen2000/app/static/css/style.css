@@ -84,3 +84,25 @@ Schriftart:
   .flash-messages{
     text-align: center;
   }
+  
+  .menu li {
+    position: relative;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 10px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
