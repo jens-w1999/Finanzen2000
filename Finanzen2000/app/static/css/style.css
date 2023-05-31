@@ -78,3 +78,9 @@ Schriftart:
     color: rgb(255, 153, 13);
     height: 100px;
     }
+
+
+  /* flash-messages*/
+  .flash-messages{
+    text-align: center;
+  }

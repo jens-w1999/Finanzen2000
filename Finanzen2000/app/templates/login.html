@@ -21,11 +21,6 @@
           </div>
           <div class="col-md-6"><!-- 2. Spalte mit Login-->
               <div class="card mt-5" style="border-radius: 0 1rem 1rem 0; height: 85%; margin-left: -15px;">
-                {% for message in get_flashed_messages() %}
-                    <div class="alert alert-warning" role="alert">
-                    {{message}}
-                    </div>
-                {% endfor %}
                   <div class="card-body p-4 p-lg-5">
                       <form action="{{url_for('login')}}" method="post">
                           <div class="d-flex align-items-center mb-3">
@@ -52,6 +47,17 @@
               </div>
           </div>
       </div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          <div class="flash-messages">
+              {% for message in messages %}
+              <div class="alert alert-warning" role="alert">
+                  {{message}}
+                 </div>
+              {% endfor %}
+          </div>
+      {% endif %}
+      {% endwith %}
   </div>
 
 </body>
