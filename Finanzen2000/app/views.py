@@ -122,8 +122,12 @@ def income():
 
 @app.route("/cost") 
 def cost():
-    return render_template('cost.html')
+    cursor = db.connection.cursor()
 
+    cursor.execute('SELECT date_from, date_to, typ_id, categorie_id, amount, description, update_date FROM Transactions WHERE user_id = 11')
+    data = cursor.fetchall()
+    return render_template('cost.html', output_data = data)
+   
 @app.route("/assetManagement")
 def assetManagement():
     return render_template('assetManagement.html')
