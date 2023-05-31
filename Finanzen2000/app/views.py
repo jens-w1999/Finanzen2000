@@ -41,7 +41,7 @@ def login():
         if check_password(encrypted_password, record[2].encode('utf-8')):
             session['loggedin']= True
             session['email']= record[4]
-            session['user_id']= record[0]
+            session['user_id'] = record[0]
             flash('login successful!')
             cursor.close()
             return redirect(url_for('home'))
@@ -125,7 +125,9 @@ def income():
 def cost():
     cursor = db.connection.cursor()
 
-    cursor.execute('SELECT date_from, date_to, typ_id, categorie_id, amount, description, update_date FROM Transactions WHERE user_id = 11')
+    #cursor.execute('SELECT Transactions.date_from, Transactions.date_to, Transactiontypes.name, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date FROM Transactions INNER JOIN Transactiontypes ON Transaction.typ_id=Transactiontypes.id;')
+    query = 'SELECT Transactions.date_from, Transactions.date_to, Transactions.categorie_id, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name FROM Transactions INNER JOIN Users ON Users.id = Transactions.user_id INNER JOIN Transactiontypes ON Transactions.type_id = Transactiontypes.id INNER JOIN Categories ON Transactions.categorie_id = Categories.id WHERE Users.id = %s'
+    cursor.execute(query, (str(session['user_id']), ))
     data = cursor.fetchall()
     return render_template('cost.html', output_data = data)
    
