@@ -19,10 +19,11 @@ def testdb():
 @app.route("/login", methods=['GET','POST'])
 def login():
     cursor = db.connection.cursor()
+    query = 'SELECT * FROM Users WHERE email=%s AND password=%s',(email, password)
     if request.method=='POST':
         email = request.form['email']
         password = request.form['password']
-        cursor.execute('SELECT * FROM Users WHERE email=%s AND password=%s',(email, password))
+        cursor.execute(query)
         record = cursor.fetchone()
 
         if record:
@@ -51,22 +52,47 @@ def home():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    message = ''
     if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
         email = request.form.get('email')
         password = request.form.get('password')
+        password_confirm = request.form.get('password_confirm')
         forename = request.form.get('forename')
         surname = request.form.get('surname')
         cursor = db.connection.cursor()
-        account = cursor.fetchone()
 
-        if account:
-            message = 'User already exists.'
-        elif not password or not email:
-            mesage = 'Please fill out the form !'
+        # test if user already exists
+        test_user_query = 'SELECT COUNT(*) FROM Users WHERE email = %s'
+        cursor.execute(test_user_query, (email,))
+        result = cursor.fetchone()[0]
+
+        # catch input user errors
+        if result > 0:
+            flash('Die E-Mail ist bereits registriert.', 'error')
+            return render_template('register.html')
+        if password == '':
+            flash('Bitte gib ein Passwort ein.', 'error')
+            return render_template('register.html')
+        if email == '':
+            flash('Bitte gib eine E-Mail ein.', 'error')
+            return render_template('register.html')
+        if forename == '':
+            flash('Bitte gib einen Namen ein.', 'error')
+            return render_template('register.html')
+        if surname == '':
+            flash('Bitte gib einen Nachnamen ein.', 'error')
+            return render_template('register.html')
+        if password != password_confirm:
+            flash('Die Passwörter stimmen nicht überein.', 'error')
+            return render_template('register.html')
         else:
-            cursor.execute('INSERT INTO Users (id, email, password, forename, surname) VALUES (NULL, %s,%s,%s,%s)',(email, password, forename, surname))
-            #db.commit()
+            query = 'INSERT INTO Users (id, email, password, forename, surname) VALUES (NULL, %s, %s, %s, %s)'
+            values = (email, password, forename, surname)
+            cursor.execute(query, values)
+            db.connection.commit()
+            cursor.close()
+            db.connection.close()
+            return redirect(url_for('login'))
+        
     return render_template('register.html')
 
 @app.route("/overview")
