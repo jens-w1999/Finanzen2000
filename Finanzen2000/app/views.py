@@ -41,6 +41,7 @@ def login():
         if check_password(encrypted_password, record[2].encode('utf-8')):
             session['loggedin']= True
             session['email']= record[4]
+            session['user_id']= record[0]
             flash('login successful!')
             cursor.close()
             return redirect(url_for('home'))
