@@ -18,8 +18,8 @@ def testdb():
 
 @app.route("/login", methods=['GET','POST'])
 def login():
-    cursor = db.connection.cursor()
     if request.method=='POST':
+        cursor = db.connection.cursor()
         email = request.form['email']
         password = request.form['password']
         cursor.execute('SELECT * FROM Users WHERE email=%s AND password=%s',(email, password))
@@ -32,7 +32,7 @@ def login():
             return redirect(url_for('home'))
         else:
             flash('Invalid login credentials')
-    cursor.close()
+        cursor.close()
     return render_template('login.html')
 
 @app.route('/logout')
