@@ -20,11 +20,19 @@
                 <h1 class="m-0">BUGET MASTER</h1>                                                           
             </div>
         </div>
-        <div class="col-6 text-right">
-            <div class="d-flex align-items-center justify-content-end">
-                <button type="button" onclick="window.location.href='{{ url_for('logout') }}';" id="logout" class="btn ml-2">Logout</button>
-            </div>
-        </div>
+        <ul class="menu">
+            <li><a href="#">Startseite</a></li>
+            <li class="dropdown">
+              <a href="#">Produkte</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Produkt 1</a></li>
+                <li><a href="#">Produkt 2</a></li>
+                <li><a href="#">Produkt 3</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Kontakt</a></li>
+          </ul>
     </div>
   </header>
 

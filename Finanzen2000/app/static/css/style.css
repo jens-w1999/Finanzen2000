@@ -24,6 +24,13 @@ Schriftart:
     
   }
 
+
+
+ #body{
+    padding-top: 100px; /* Platzhalter für den fixierten Header */
+    padding-bottom: 100px; /* Platzhalter für den fixierten Footer */
+  }
+
   /*Logout Button*/
   #logout{
     content: center;
@@ -62,8 +69,7 @@ Schriftart:
 
 
   #card_Index{
-    height: 600px; /* Höhe der Karte der Index Seite*/
-    margin-top: 20px;;
+    height: auto; /* Höhe der Karte der Index Seite*/
     font-size: 17px;
   }
 
@@ -72,3 +78,31 @@ Schriftart:
     color: rgb(255, 153, 13);
     height: 100px;
     }
+
+
+  /* flash-messages*/
+  .flash-messages{
+    text-align: center;
+  }
+  
+  .menu li {
+    position: relative;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 10px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
