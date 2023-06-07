@@ -57,16 +57,16 @@
     </div>
     <!-- Footer -->
     <footer id="footer" class="container-fluid fixed-bottom">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <p>Impressum</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#"><img src="social-media-icon1.png" alt="Social Media Icon 1"></a></li>
-                <li class="list-inline-item"><a href="#"><img src="social-media-icon2.png" alt="Social Media Icon 2"></a></li>
-                <li class="list-inline-item"><a href="#"><img src="social-media-icon3.png" alt="Social Media Icon 3"></a></li>
-            </ul>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>Impressum</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#"><img src="{{ url_for('static', filename='img/instagram.png') }}" alt="Instagram"></a></li>
+                    <li class="list-inline-item"><a href="#"><img src="{{ url_for('static', filename='img/linkedin.png') }}" alt="Linkedin"></a></li>
+                    <li class="list-inline-item"><a href="#"><img src="{{ url_for('static', filename='img/tiktok.png') }}" alt="Tiktok"></a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    </footer>
+        </footer>
 </body>
 </html>
