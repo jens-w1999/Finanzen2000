@@ -65,16 +65,8 @@
                     <div class="table-title bg-white p-3">
                         <h1>Ausgaben</h1>
                         <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                            <select class="form-control" id="category">
-                                <option value="all">Alle Kategorien</option>
-                                <option value="lebensmittel">Lebensmittel</option>
-                                <option value="miete">Miete</option>
-                                <option value="auto">Auto</option>
-                            </select>
+                            <div class="col-sm-4">
                             </div>
-                        </div>
                         <div class="col-sm-8">
                             <div class="btn-group float-right">
                             <button type="button" class="btn btn-primary" id="add-row">Hinzufügen</button>
@@ -86,37 +78,40 @@
                     <table class="table">
                     <thead>
                         <tr>
-                        <th>Datum</th>
-                        <th>Kategorie</th>
-                        <th>Beschreibung</th>
-                        <th>Kosten</th>
+                        <th>Date (From)</th>
+                        <th>Date (To)</th>
+                        <th>Categories</th>
+                        <th>Description</th>
+                        <th>Amount</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                         <td><input type="date" class="form-control" name="date"></td>
+                        <td><input type="date" class="form-control" name="date"></td>
                         <td>
+                            
                             <select class="form-control" name="category">
-                            <option value="lebensmittel">Lebensmittel</option>
-                            <option value="miete">Miete</option>
-                            <option value="auto">Auto</option>
+                                {% for row in dropDown_data %}
+                                <option value=Categories>{{row[0]}}</option>
+                                {% endfor %}
+                            
                             </select>
                         </td>
-                        <td><input type="text" class="form-control" name="description"></td>
                         <td><input type="number" class="form-control" name="cost"></td>
+                        <td><input type="text" class="form-control" name="description"></td>
                         </tr>
                     </tbody>
                     </table>
-                    <table border>
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>Date (From)</th>
                             <th>Date (To)</th>
-                            <th>Typ_ID</th>
-                            <th>Categorie_ID</th>
+                            <th>Category</th>
                             <th>Amount</th>
                             <th>Description</th>
-                            <th>Update_Date</th>
+                            <th>Update date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -128,7 +123,6 @@
                                     <td>{{row[3]}}</td>
                                     <td>{{row[4]}}</td>
                                     <td>{{row[5]}}</td>
-                                    <td>{{row[6]}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

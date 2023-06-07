@@ -124,12 +124,14 @@ def income():
 @app.route("/cost") 
 def cost():
     cursor = db.connection.cursor()
-
+    dropdownQuery = "SELECT Categories.name FROM `Categories` WHERE id > 5"
+    cursor.execute(dropdownQuery, )
+    dropdownData = cursor.fetchall()
     #cursor.execute('SELECT Transactions.date_from, Transactions.date_to, Transactiontypes.name, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date FROM Transactions INNER JOIN Transactiontypes ON Transaction.typ_id=Transactiontypes.id;')
-    query = 'SELECT Transactions.date_from, Transactions.date_to, Transactions.categorie_id, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name FROM Transactions INNER JOIN Users ON Users.id = Transactions.user_id INNER JOIN Transactiontypes ON Transactions.type_id = Transactiontypes.id INNER JOIN Categories ON Transactions.categorie_id = Categories.id WHERE Users.id = %s'
+    query = 'SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date FROM Transactions INNER JOIN Users ON Users.id = Transactions.user_id INNER JOIN Transactiontypes ON Transactions.type_id = Transactiontypes.id INNER JOIN Categories ON Transactions.categorie_id = Categories.id WHERE Users.id = %s'
     cursor.execute(query, (str(session['user_id']), ))
     data = cursor.fetchall()
-    return render_template('cost.html', output_data = data)
+    return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
    
 @app.route("/assetManagement")
 def assetManagement():
