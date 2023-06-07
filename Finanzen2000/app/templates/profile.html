@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+    
+{% include 'header.html' %}
+<head>
+  <meta charset="UTF-8">
+  <title>Registrieren</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Eigene CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <title>Mein Profil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            margin-top: 10px;
+        }
+        
+        .card {
+            border-radius: 1rem;
+            background-color: white;
+            height: 85%;
+            margin-left: -15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-body {
+            padding: 4rem;
+        }
+        
+        .h1 {
+            text-align: center;
+        }
+        
+        .form-label {
+            font-weight: bold;
+        }
+        
+        .form-control {
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body p-4 p-lg-5">
+                        <form method="POST" action="/register">
+                            <div class="d-flex align-items-center mb-2">
+                                <h1 class="h1">Mein Profil</h1>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Vorname:</label>
+                                <input id="forename" name="forename" class="form-control form-control-lg" />
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Nachname:</label>
+                                <input id="surname" name="surname" class="form-control form-control-lg" />
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Email Adresse:</label>
+                                <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
