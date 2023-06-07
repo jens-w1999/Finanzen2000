@@ -125,7 +125,7 @@ def income():
 @app.route("/cost", methods=['GET', 'POST']) 
 def cost():
     cursor = db.connection.cursor()
-    dropdownQuery = "SELECT Categories.name FROM `Categories` WHERE id > 5"
+    dropdownQuery = "SELECT * FROM `Categories` WHERE id > 5"
     cursor.execute(dropdownQuery, )
     dropdownData = cursor.fetchall()
     #cursor.execute('SELECT Transactions.date_from, Transactions.date_to, Transactiontypes.name, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date FROM Transactions INNER JOIN Transactiontypes ON Transaction.typ_id=Transactiontypes.id;')
@@ -145,41 +145,6 @@ def cost():
         type_id = 1
         if (date_from != None):
             type_id = 2
-
-        if (category == "Nettoeinkommen"):
-            category = 1
-        if (category == "Kindergeld"):
-            category = 2
-        if (category == "Nebenjob "):
-            category = 3
-        if (category == "sonstige Einnahmen"):
-            category = 4
-        if (category == "Bankeinkünfte "):
-            category = 5
-        if (category == "Miete (Warm)"):
-            category = 6
-        if (category == "Telefonie, Internet, Handy"):
-            category = 7
-        if (category == "Versicherung"):
-            category = 8
-        if (category == "Sparpläne"):
-            category = 9
-        if (category == "Kreditrate"):
-            category = 10
-        if (category == "sonstige Verträge"):
-            category = 11
-        if (category == "Lebensmittel"):
-            category = 12
-        if (category == "Kleidung"):
-            category = 13
-        if (category == "Mobilität"):
-            category = 14
-        if (category == "Freizeit"):
-            category = 15
-        if (category == "Reisen"):
-            category = 16
-        if (category == "sonstige Ausgaben"):
-            category = 17
 
         cursor = db.connection.cursor()
         query = 'INSERT INTO Transactions (id, user_id, amount, categorie_id, type_id, date_from, date_to, update_date, description) VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)'
