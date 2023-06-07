@@ -136,3 +136,7 @@ def cost():
 @app.route("/assetManagement")
 def assetManagement():
     return render_template('assetManagement.html')
+
+@app.route("/profile")
+def profile():
+    return render_template('profile.html')
