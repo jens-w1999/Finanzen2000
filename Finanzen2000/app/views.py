@@ -4,6 +4,7 @@ from . import app, db
 from flask import Flask,render_template, request, redirect, session, url_for, flash
 from flask_mysqldb import MySQL
 import bcrypt
+from datetime import date
 
 # Set secret key for sessions
 app.secret_key = b'e2699aed8897f2c4e91eee2cd238adcec98763a1db315653adca2ad056badc9a192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
@@ -121,7 +122,7 @@ def overview():
 def income():
     return render_template('income.html')
 
-@app.route("/cost") 
+@app.route("/cost", methods=['GET', 'POST']) 
 def cost():
     cursor = db.connection.cursor()
     dropdownQuery = "SELECT Categories.name FROM `Categories` WHERE id > 5"
@@ -131,8 +132,68 @@ def cost():
     query = 'SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date FROM Transactions INNER JOIN Users ON Users.id = Transactions.user_id INNER JOIN Transactiontypes ON Transactions.type_id = Transactiontypes.id INNER JOIN Categories ON Transactions.categorie_id = Categories.id WHERE Users.id = %s'
     cursor.execute(query, (str(session['user_id']), ))
     data = cursor.fetchall()
+    cursor.close()
+
+    if request.method == 'POST' and 'description' in request.form and 'date_to' in request.form:
+        user_id = int(session['user_id'])
+        date_from = request.form.get('date_from')
+        date_to = request.form.get('date_to')
+        category = request.form.get('category')
+        amount = request.form.get('amount')
+        description = request.form.get('description')
+        update_date = date.today()
+        type_id = 1
+        if (date_from != None):
+            type_id = 2
+
+        if (category == "Nettoeinkommen"):
+            category = 1
+        if (category == "Kindergeld"):
+            category = 2
+        if (category == "Nebenjob "):
+            category = 3
+        if (category == "sonstige Einnahmen"):
+            category = 4
+        if (category == "Bankeinkünfte "):
+            category = 5
+        if (category == "Miete (Warm)"):
+            category = 6
+        if (category == "Telefonie, Internet, Handy"):
+            category = 7
+        if (category == "Versicherung"):
+            category = 8
+        if (category == "Sparpläne"):
+            category = 9
+        if (category == "Kreditrate"):
+            category = 10
+        if (category == "sonstige Verträge"):
+            category = 11
+        if (category == "Lebensmittel"):
+            category = 12
+        if (category == "Kleidung"):
+            category = 13
+        if (category == "Mobilität"):
+            category = 14
+        if (category == "Freizeit"):
+            category = 15
+        if (category == "Reisen"):
+            category = 16
+        if (category == "sonstige Ausgaben"):
+            category = 17
+
+        cursor = db.connection.cursor()
+        query = 'INSERT INTO Transactions (id, user_id, amount, categorie_id, type_id, date_from, date_to, update_date, description) VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)'
+        values = (user_id, amount, category, type_id, date_from, date_to, update_date, description)
+        cursor.execute(query, values)
+        db.connection.commit()
+        cursor.close()
+        return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
     return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
-   
+
+@app.route("/addExpense")
+def addExpense():
+    return render_template("modal_add_Expense.html")
+
 @app.route("/assetManagement")
 def assetManagement():
     return render_template('assetManagement.html')
