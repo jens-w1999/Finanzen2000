@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Budget Master</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Eigene CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+
+<!-- Header -->
+<header id="header" class="container-fluid ">
+    <div class="row ">
+        <div class="col-6"><!-- col-6 = 2 Spalten -->
+            <div class="d-flex align-items-center">
+                <img src="{{ url_for('static', filename='img/icon.png') }}" alt="Logo" class="mr-2">    
+                <h1 class="m-0">BUGET MASTER</h1>                                                           
+            </div>
+        </div>
+        <div class="col-6 text-right">
+            <div class="d-flex align-items-center justify-content-end">
+                <ul class="menu">
+                    <li class="dropdown">
+                      <button id="logout" class="btn ml-2">Konto</button>
+                      <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" class="dropdown-item">Profil</a></li>
+                        <li><a href="#" class="dropdown-item">Logout</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+  </header>
