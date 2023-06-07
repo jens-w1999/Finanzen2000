@@ -8,7 +8,7 @@
                 <div class="card shadow">
                     <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Image 1" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Budget Master</h5>
+                        <h5 class="card-title"><a href="#" class="text-dark">Budget Master</a></h5>
                         <p class="card-text">Die Entstehung vom Buget Master</p>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                 <div class="card shadow">
                     <img src="image2.jpg" alt="Image 2" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Übersicht</h5>
+                        <h5 class="card-title" ><a href="{{ url_for('overview') }}" class="text-dark">Übersicht</a></h5>
                         <p class="card-text">Ihre Finanzen aus einem Blick</p>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="card shadow">
                     <img src="image3.jpg" alt="Image 3" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">History</h5>
+                        <h5 class="card-title"><a href="#" class="text-dark">History</a></h5>
                         <p class="card-text">Comming soon</p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="card shadow">
                     <img src="image4.jpg" alt="Image 4" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Einnahmen</h5>
+                        <h5 class="card-title"><a href="{{ url_for('income') }}" class="text-dark">Einnahmen</a></h5>
                         <p class="card-text">Hier gehts zu Ihren Einnahmen</p>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="card shadow">
                     <img src="image5.jpg " alt="Image 5" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Ausgaben</h5>
+                        <h5 class="card-title"><a href="{{ url_for('cost') }}" class="text-dark">Ausgaben</a></h5>
                         <p class="card-text">Hier gehts zu ihren Ausgaben</p>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="card shadow">
                     <img src="image6.jpg" alt="Image 6" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Asset Managment</h5>
+                        <h5 class="card-title"><a href="{{ url_for('assetManagement') }}" class="text-dark">Asset Managment</a></h5>
                          <p class="card-text">Ihr Portfolio zum greifen nah</p>
                     </div>
                 </div>

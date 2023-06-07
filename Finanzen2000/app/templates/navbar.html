@@ -1,28 +1,36 @@
  <!-- Navbar -->
- <nav class="navbar justify-content-center navbar-expand-md navbar-light">
-    <div class="container">         
+<nav class="navbar justify-content-center navbar-expand-md navbar-light">
+    <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
+                <li class="nav-item {% if request.path == url_for('home') %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('home') }}">Home </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('overview') }}">Übersicht </a>
+                <li class="nav-item {% if request.path == url_for('overview') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('overview') }}">Übersicht</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.path == url_for('income') %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('income') }}">Einnahmen</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.path == url_for('cost') %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('cost') }}">Ausgaben</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Asset Management</a>
+                <li class="nav-item {% if request.path == url_for('assetManagement') %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('assetManagement') }}">Asset Management</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
+
+
+
+
+
+
