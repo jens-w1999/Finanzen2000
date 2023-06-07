@@ -5,8 +5,8 @@
     <div class="container mt-4 ">
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card shadow">
-                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Image 1" class="card-img-top">
+                <div class="card shadow" style="border-radius: 1rem">
+                    <img style="border-radius: 1rem" src="{{ url_for('static', filename='img/logo.png') }}" alt="Image 1" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><a href="#" class="text-dark">Budget Master</a></h5>
                         <p class="card-text">Die Entstehung vom Buget Master</p>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img src="image2.jpg" alt="Image 2" class="card-img-top">
+                    <img style="border-radius: 1rem" src="image2.jpg" alt="Image 2" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title" ><a href="{{ url_for('overview') }}" class="text-dark">Übersicht</a></h5>
                         <p class="card-text">Ihre Finanzen aus einem Blick</p>
@@ -24,10 +24,10 @@
             </div>
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img src="image3.jpg" alt="Image 3" class="card-img-top">
+                    <img style="border-radius: 1rem"src="image3.jpg" alt="Image 3" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="#" class="text-dark">History</a></h5>
-                        <p class="card-text">Comming soon</p>
+                        <h5 class="card-title"><a href="{{ url_for('profile') }}" class="text-dark">Profil</a></h5>
+                        <p class="card-text">Ihre Daten im Überblick</p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img src="image4.jpg" alt="Image 4" class="card-img-top">
+                    <img style="border-radius: 1rem" src="image4.jpg" alt="Image 4" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{ url_for('income') }}" class="text-dark">Einnahmen</a></h5>
                         <p class="card-text">Hier gehts zu Ihren Einnahmen</p>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img src="image5.jpg " alt="Image 5" class="card-img-top">
+                    <img style="border-radius: 1rem" src="image5.jpg " alt="Image 5" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{ url_for('cost') }}" class="text-dark">Ausgaben</a></h5>
                         <p class="card-text">Hier gehts zu ihren Ausgaben</p>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card shadow">
-                    <img src="image6.jpg" alt="Image 6" class="card-img-top">
+                    <img style="border-radius: 1rem" src="image6.jpg" alt="Image 6" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{ url_for('assetManagement') }}" class="text-dark">Asset Managment</a></h5>
                          <p class="card-text">Ihr Portfolio zum greifen nah</p>

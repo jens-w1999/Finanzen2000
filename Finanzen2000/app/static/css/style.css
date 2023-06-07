@@ -53,6 +53,8 @@ Schriftart:
   .card {
     height: 250px; /* Höhe der Karte*/
     margin-top: 20px;
+    border-radius: 1rem; /* Abgerundete Ecken*/
+    
   }
 
   .card-img-top{
@@ -100,7 +102,6 @@ Schriftart:
     font-weight: bold;
   }
 
-  
   
   .dropdown:hover .dropdown-menu {
     display: block;
