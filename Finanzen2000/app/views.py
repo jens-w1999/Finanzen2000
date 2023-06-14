@@ -132,7 +132,7 @@ def cost():
     dropdownData = cursor.fetchall()
 
     query = """
-    SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name 
+    SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date, Transactions.id 
     FROM Transactions 
     INNER JOIN Users 
     ON Users.id = Transactions.user_id 
@@ -166,6 +166,17 @@ def cost():
         cursor.close()
         return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
     return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
+
+@app.route("/delete_entry/<int:entry_id>", methods=['POST'])
+def delete_entry(entry_id):
+    # Hier kommt der Code zum Löschen des Eintrags mit der gegebenen entry_id
+    cursor = db.connection.cursor()
+    delete_query = "DELETE FROM Transactions WHERE id = %s"
+    cursor.execute(delete_query, (entry_id,))
+    db.connection.commit()
+    cursor.close()
+    flash('Eintrag erfolgreich gelöscht!')
+    return redirect(url_for('cost'))
 
 @app.route("/addExpense")
 def addExpense():
