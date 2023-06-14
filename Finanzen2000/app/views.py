@@ -132,7 +132,7 @@ def cost():
     dropdownData = cursor.fetchall()
 
     query = """
-    SELECT Transactions.date_from, Transactions.date_to, Transactions.categorie_id, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name 
+    SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name 
     FROM Transactions 
     INNER JOIN Users 
     ON Users.id = Transactions.user_id 
