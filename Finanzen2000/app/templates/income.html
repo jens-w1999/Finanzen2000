@@ -2,7 +2,127 @@
 {% include 'navbar.html' %}
 
     <!-- Body -->
+    {% block body %}
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center mt-3 ml-5 mr-5">
+                <div class="col-12">
+                    <div class="table-title bg-white p-3">
+                        <h1>Einnahmen</h1>
+                        <div class="row">
+                            <div class="col-sm-4">
+                            </div>
+                        <div class="col-sm-8">
+                            <div class="btn-group float-right">
+                            <button type="button" class="btn btn-primary" id="add-row" data-toggle="modal" data-target="#mymodal">Hinzufügen</button>
+                            <button type="button" class="btn btn-danger" id="delete-row">Entfernen</button>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th>Date (From)</th>
+                        <th>Date (To)</th>
+                        <th>Categories</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td><input type="date" class="form-control" name="date"></td>
+                        <td><input type="date" class="form-control" name="date"></td>
+                        <td>
+                            
+                            <select class="form-control" name="category">
+                                {% for row in dropDown_data %}
+                                <option value=Categories>{{row[1]}}</option>
+                                {% endfor %}
+                            
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="cost"></td>
+                        <td><input type="text" class="form-control" name="description"></td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Date (From)</th>
+                            <th>Date (To)</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Update date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in output_data %}
+                                <tr>
+                                    <td>{{row[0]}}</td>
+                                    <td>{{row[1]}}</td>
+                                    <td>{{row[2]}}</td>
+                                    <td>{{row[3]}}</td>
+                                    <td>{{row[4]}}</td>
+                                    <td>{{row[5]}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+    
 
+    
+
+    </footer>
+    <!-- Modal Add income-->
+<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Einnahmen Hinzufügen</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="/cost">
+            <div class="modal-body">
+            <label for="date_from" class="col-form-label">Von</label>
+            <input type="date" class="form-control" id="date_from" name="date_from">
+            <label for="date_to" class="col-form-label">Bis</label>
+            <input type="date" class="form-control" id="date_to" name="date_to">
+            <label for="category" class="col-form-label">Kategorie</label>
+            <select class="form-control" name="category" id="category">
+                {% for row in dropDown_data %}
+                <option value="{{row[0]}}">{{row[1]}}</option>
+                {% endfor %}        
+            </select>
+            <label for="amount" class="col-form-label">Betrag</label>
+            <input type="number" step="0.01" class="form-control" id="amount" name="amount">
+            <label for="description" class="col-form-label">Beschreibung</label>
+            <input type="text" class="form-control" id="description" name="description">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Schließen</button>
+                <button type="submit" class="btn btn-primary" value="cost">Eintrag Hinzufügen</button>
+            </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
 
     <!-- Footer -->
 
