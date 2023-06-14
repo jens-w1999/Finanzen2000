@@ -67,6 +67,12 @@
                                     <td>{{row[3]}}</td>
                                     <td>{{row[4]}}</td>
                                     <td>{{row[5]}}</td>
+                                    <td>
+                                        <form method="POST" action="{{ url_for('delete_entry', entry_id=row[6]) }}">
+                                            <input type="hidden" name="entry_id" value="{{ row[6] }}">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sind Sie sicher, dass Sie den Eintrag löschen möchten?')">Löschen</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
