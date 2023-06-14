@@ -175,6 +175,16 @@ def addExpense():
 def assetManagement():
     return render_template('assetManagement.html')
 
+    
 @app.route("/profile")
 def profile():
-    return render_template('profile.html')
+    cursor = db.connection.cursor()
+    user_id = session['user_id']
+    query = "SELECT forename, surname, email FROM Users WHERE id = %s"
+    cursor.execute(query, (user_id,))
+    user_data = cursor.fetchone()
+    cursor.close()
+    forename = user_data[0]
+    surname = user_data[1]
+    email = user_data[2]
+    return render_template('profile.html', forename=forename, surname=surname, email=email)
