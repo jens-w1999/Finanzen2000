@@ -140,7 +140,7 @@ def cost():
     ON Transactions.type_id = Transactiontypes.id 
     INNER JOIN Categories 
     ON Transactions.categorie_id = Categories.id 
-    WHERE Users.id = %s
+    WHERE Users.id = %s AND (type_id = 3 OR type_id = 4)
     """
     cursor.execute(query, (str(session['user_id']), ))
     data = cursor.fetchall()
