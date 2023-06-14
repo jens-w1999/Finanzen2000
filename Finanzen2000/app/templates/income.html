@@ -15,7 +15,7 @@
                         <div class="col-sm-8">
                             <div class="btn-group float-right">
                             <button type="button" class="btn btn-primary" id="add-row" data-toggle="modal" data-target="#mymodal">Hinzufügen</button>
-                            <button type="button" class="btn btn-danger" id="delete-row">Entfernen</button>
+                            <button type="button" class="btn btn-success" id="use-filter">Filter anwenden</button>
                         </div>
                     </div>
                     </div>
@@ -23,11 +23,10 @@
                     <table class="table">
                     <thead>
                         <tr>
-                        <th>Date (From)</th>
-                        <th>Date (To)</th>
-                        <th>Categories</th>
-                        <th>Description</th>
-                        <th>Amount</th>
+                        <th>Datum</th>
+                        <th>Kategorien</th>
+                        <th>Beschreibung</th>
+                        <th>Betrag</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,12 +50,12 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Date (From)</th>
-                            <th>Date (To)</th>
-                            <th>Category</th>
-                            <th>Amount</th>
-                            <th>Description</th>
-                            <th>Update date</th>
+                            <th>Datum (Von)</th>
+                            <th>Datum (Bis)</th>
+                            <th>Kategorie</th>
+                            <th>Betrag</th>
+                            <th>Beschreibung</th>
+                            <th>Aktualisierungsdatum</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,6 +67,14 @@
                                     <td>{{row[3]}}</td>
                                     <td>{{row[4]}}</td>
                                     <td>{{row[5]}}</td>
+                                    <!--
+                                    <td>
+                                        <form method="POST" action="{{ url_for('delete_entry', entry_id=row[6]) }}">
+                                            <input type="hidden" name="entry_id" value="{{ row[6] }}">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sind Sie sicher, dass Sie den Eintrag löschen möchten?')">Löschen</button>
+                                        </form>
+                                    </td>
+                                    -->
                                 </tr>
                             {% endfor %}
                         </tbody>

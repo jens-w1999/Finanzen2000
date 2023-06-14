@@ -217,6 +217,17 @@ def delete_entry(entry_id):
     flash('Eintrag erfolgreich gelöscht!')
     return redirect(url_for('cost'))
 
+#@app.route("/delete_entry_income/<int:entry_id>", methods=['POST'])
+#def delete_entry_income(entry_id):
+#    # Hier kommt der Code zum Löschen des Eintrags mit der gegebenen entry_id
+#    cursor = db.connection.cursor()
+#    delete_query = "DELETE FROM Transactions WHERE id = %s"
+#    cursor.execute(delete_query, (entry_id,))
+#    db.connection.commit()
+#    cursor.close()
+#    flash('Eintrag erfolgreich gelöscht!')
+#    return redirect(url_for('income'))
+
 @app.route("/addExpense")
 def addExpense():
     return render_template("modal_add_Expense.html")
