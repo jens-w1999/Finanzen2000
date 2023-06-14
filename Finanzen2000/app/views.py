@@ -127,6 +127,10 @@ def income():
 def cost():
     cursor = db.connection.cursor()
 
+    dropdownQuery = "SELECT Categories.name FROM `Categories` WHERE id > 5"
+    cursor.execute(dropdownQuery, )
+    dropdownData = cursor.fetchall()
+
     query = """
     SELECT Transactions.date_from, Transactions.date_to, Transactions.categorie_id, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name 
     FROM Transactions 
