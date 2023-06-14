@@ -150,9 +150,9 @@ def cost():
         amount = request.form.get('amount')
         description = request.form.get('description')
         update_date = date.today()
-        type_id = 1
+        type_id = 4
         if (date_from != None):
-            type_id = 2
+            type_id = 3
 
         cursor = db.connection.cursor()
         query = 'INSERT INTO Transactions (id, user_id, amount, categorie_id, type_id, date_from, date_to, update_date, description) VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)'
