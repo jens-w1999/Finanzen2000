@@ -37,7 +37,7 @@
                             
                             <select class="form-control" name="category">
                                 {% for row in dropDown_data %}
-                                <option value=Categories>{{row[1]}}</option>
+                                <option value={{row[0]}}>{{row[1]}}</option>
                                 {% endfor %}
                             
                             </select>

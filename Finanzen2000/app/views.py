@@ -119,9 +119,48 @@ def register():
 def overview():
     return render_template('overview.html')
 
-@app.route("/income")
+@app.route("/income", methods=['GET', 'POST'])
 def income():
-    return render_template('income.html')
+    cursor = db.connection.cursor()
+
+    dropdownQuery = "SELECT Categories.id, Categories.name FROM `Categories` WHERE id < 6"
+    cursor.execute(dropdownQuery, )
+    dropdownData = cursor.fetchall()
+
+    query = """
+    SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date, Categories.name 
+    FROM Transactions 
+    INNER JOIN Users 
+    ON Users.id = Transactions.user_id 
+    INNER JOIN Transactiontypes 
+    ON Transactions.type_id = Transactiontypes.id 
+    INNER JOIN Categories 
+    ON Transactions.categorie_id = Categories.id 
+    WHERE Users.id = %s AND (type_id = 1 OR type_id = 2)
+    """
+    cursor.execute(query, (str(session['user_id']), ))
+    data = cursor.fetchall()
+    cursor.close()
+
+    if request.method == 'POST' and 'description' in request.form and 'date_to' in request.form:
+        user_id = int(session['user_id'])
+        date_from = request.form.get('date_from')
+        date_to = request.form.get('date_to')
+        category = request.form.get('category')
+        amount = request.form.get('amount')
+        description = request.form.get('description')
+        update_date = date.today()
+        type_id = 2
+        if (date_from != None):
+            type_id = 1
+
+        cursor = db.connection.cursor()
+        query = 'INSERT INTO Transactions (id, user_id, amount, categorie_id, type_id, date_from, date_to, update_date, description) VALUES (NULL, %s, %s, %s, %s, %s, %s, %s, %s)'
+        values = (user_id, amount, category, type_id, date_from, date_to, update_date, description)
+        cursor.execute(query, values)
+        db.connection.commit()
+        cursor.close()
+    return render_template('income.html',  output_data = data, dropDown_data = dropdownData)
 
 @app.route("/cost", methods=['GET', 'POST']) 
 def cost():
