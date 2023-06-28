@@ -170,7 +170,7 @@ def cost():
     cursor.execute(dropdownQuery, )
     dropdownData = cursor.fetchall()
 
-    query = """
+    tableDataQuery = """
     SELECT Transactions.date_from, Transactions.date_to, Categories.name, Transactions.amount, Transactions.description, Transactions.update_date, Transactions.id 
     FROM Transactions 
     INNER JOIN Users 
@@ -181,18 +181,24 @@ def cost():
     ON Transactions.categorie_id = Categories.id 
     WHERE Users.id = %s AND (type_id = 3 OR type_id = 4)
     """
-    cursor.execute(query, (str(session['user_id']), ))
+    cursor.execute(tableDataQuery, (str(session['user_id']), ))
     data = cursor.fetchall()
     cursor.close()
 
     if request.method == 'POST' and 'description' in request.form and 'date_to' in request.form:
         user_id = int(session['user_id'])
-        date_from = request.form.get('date_from')
-        date_to = request.form.get('date_to')
         category = request.form.get('category')
         amount = request.form.get('amount')
         description = request.form.get('description')
         update_date = date.today()
+        if(request.form.get('date_from') == ''):
+            date_from = date.today()
+        else:
+            date_from = request.form.get('date_from')
+        if(request.form.get('date_from') == ''):
+            date_to = date.today()
+        else:
+            date_to = request.form.get('date_to')
         type_id = 4
         if (date_from != None):
             type_id = 3
@@ -202,6 +208,8 @@ def cost():
         values = (user_id, amount, category, type_id, date_from, date_to, update_date, description)
         cursor.execute(query, values)
         db.connection.commit()
+        cursor.execute(tableDataQuery, (str(session['user_id']), ))
+        data = cursor.fetchall()
         cursor.close()
         return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
     return render_template('cost.html', output_data = data, dropDown_data = dropdownData)
