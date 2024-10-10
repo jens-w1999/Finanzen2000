@@ -1,0 +1,109 @@
+/* Stil für die Webseite 
+Farben:
+    Blau: rgb(4,0,59)
+    Orange: rgb(255, 153, 13)
+    Grau: rgb(192, 192, 192)
+  
+Schriftart:
+      Logo: Cinzel
+
+*/
+
+  #header {
+    padding: 10px;
+    background-color: rgb(4,0,59);
+  }
+  #header img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  #header h1 {
+    color: rgb(255, 153, 13);
+    font-family: "Cinzel";
+    font-size: 50px;
+    
+  }
+
+
+
+ #body{
+    padding-top: 100px; /* Platzhalter für den fixierten Header */
+    padding-bottom: 100px; /* Platzhalter für den fixierten Footer */
+  }
+
+  /*Logout Button*/
+  #logout{
+    content: center;
+    background-color: rgb(192, 192, 192);
+    margin-top: 25px;
+  }
+
+    /*Login Button*/
+    #btn_login{
+      content: center;
+      margin-top: 25px;
+    }
+
+
+  .navbar {
+    background-color: rgb(192, 192, 192);
+    font-weight: bold;
+  }
+
+  .card {
+    height: 250px; /* Höhe der Karte*/
+    margin-top: 20px;
+    border-radius: 1rem; /* Abgerundete Ecken*/
+    
+  }
+
+  .card-img-top{
+  width: 100px; /* Breite des Bildes*/
+  height: 100px; /* Höhe des Bildes*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .card-title{
+    text-decoration: underline;
+  }
+
+
+  #card_Index{
+    height: auto; /* Höhe der Karte der Index Seite*/
+    font-size: 17px;
+  }
+
+  #footer {
+    background-color: rgb(4,0,59);
+    color: rgb(255, 153, 13);
+    height: 100px;
+    }
+
+
+  /* flash-messages*/
+  .flash-messages{
+    text-align: center;
+  }
+  
+  .menu li {
+    position: relative;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 10px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  

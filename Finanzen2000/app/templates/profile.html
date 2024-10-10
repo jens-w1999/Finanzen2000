@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+{% include 'navbar.html' %}
+
+
+<body style="background-color: #f8f9fa;">
+    <div class="container" style="margin-top: 10px;">
+  
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="card shadow mt-5" style="height: auto;">
+                    <div class="card-body p-4 p-lg-5">
+                        <form method="POST" action="/register">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="h1" style="text-align: center;">Mein Profil</span>
+                            </div>
+                            <div class="mb-2">
+                              <label class="form-label">Vorname:</label>
+                              <input id="forename" name="forename" class="form-control form-control-lg" value="{{ forename }}" readonly/>
+                              </div>
+  
+                              <div class="mb-2">
+                                  <label class="form-label">Nachname:</label>
+                                  <input id="surname" name="surname" class="form-control form-control-lg" value="{{ surname }}"readonly />
+                                  </div>
+  
+                            <div class="mb-2">
+                              <label class="form-label">Email Adresse:</label>
+                              <input type="email" id="email" name="email" class="form-control form-control-lg" value="{{ email }}"readonly />
+                              </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<!-- Keine Header-Anbindung wegen dem Login Button  -->
+
+
+<head>
+  <meta charset="UTF-8">
+  <title>Budget Master</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Eigene CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body style="background-color: #f8f9fa;">
+  <!-- Header -->
+  <header id="header" class="container-fluid fixed-top">
+    <div class="row ">
+        <div class="col-6"><!-- col-6 = 2 Spalten -->
+            <div class="d-flex align-items-center">
+                <img src="{{ url_for('static', filename='img/icon.png') }}" alt="Logo" class="mr-2">    
+                <h1 class="m-0">BUGET MASTER</h1>                                                           
+            </div>
+        </div>
+        <div class="col-6 text-right">
+            <div class="d-flex align-items-center justify-content-end">
+             <!-- Buttton für Login --> <button type="button" onclick="window.location.href='{{ url_for('login') }}';" id="btn_login" class="btn btn-success ml-2">Login</button>
+            </div>
+        </div>
+    </div>
+  </header>
+
+
+    <!-- Body-->
+    <div id="body" class="container mt-4 ">
+        <div class="row mb-4">
+            <div class="col -8">
+                <div class="card shadow" id="card_Index">
+                    <div class="card-body">
+                        <h3 class="card-title">Willkommen in der aufregenden Welt von Budget Master!</h3>
+                        <p class="card-text" > <br/>Wir sind ein innovatives Unternehmen, das es sich zur Aufgabe gemacht hat, das Haushaltsmanagement für jeden einfach und effektiv zu gestalten. Unsere Online-Haushaltsrechner sind für alle zugänglich und ermöglichen es Ihnen, Ihre Finanzen im Griff zu behalten.
+
+                            <br/><br/>Aber wir bieten noch mehr als das! Mit unserem Asset-Management-System können Sie Ihre Investitionen und Vermögenswerte verwalten und optimieren. Egal, ob Sie ein erfahrener Investor sind oder gerade erst anfangen, wir unterstützen Sie dabei, kluge finanzielle Entscheidungen zu treffen und Ihre Ziele zu erreichen.
+                            
+                            <br/>Budget Master wurde im Jahr 2023 von fünf ehrgeizigen Studenten der WHS Bocholt gegründet und hat sich seitdem zu einem der erfolgreichsten Startups in unserer Region entwickelt. Unser Team steckt voller Leidenschaft und Expertise, um innovative Lösungen für Ihre finanziellen Bedürfnisse zu schaffen.
+                            
+                            <br/>Natürlich haben wir auch große Träume und Ambitionen! Unser langfristiges Ziel ist es, bis zum Jahr 2030 an die Börse zu gehen und die Finanzwelt mit unseren revolutionären Ideen zu begeistern. Aber seien wir ehrlich, wer braucht schon einen Börsengang, wenn wir bereits jetzt Millionen von Menschen dabei unterstützen können, ihre Finanzen erfolgreich zu managen?
+                            
+                            <br/><br/>In diesem Sinne, denken Sie daran: Jeder Cent zählt, aber das Leben besteht aus mehr als nur Zahlen. Budget Master steht Ihnen zur Seite, um Ihre finanzielle Freiheit zu erreichen und gleichzeitig das Beste aus Ihrem Leben zu machen. Lassen Sie uns gemeinsam den Weg zu einer sorgenfreien Zukunft gehen!
+                            
+                            <br/><br/><b>Herzlich willkommen bei Budget Master </b>– wo Ihre finanziellen Träume Wirklichkeit werden!</b></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer id="footer" class="container-fluid fixed-bottom">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>Impressum</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#"><img src="{{ url_for('static', filename='img/instagram.png') }}" alt="Instagram"></a></li>
+                    <li class="list-inline-item"><a href="#"><img src="{{ url_for('static', filename='img/linkedin.png') }}" alt="Linkedin"></a></li>
+                    <li class="list-inline-item"><a href="#"><img src="{{ url_for('static', filename='img/tiktok.png') }}" alt="Tiktok"></a></li>
+                </ul>
+            </div>
+        </div>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registrieren</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Eigene CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body style="background-color: #f8f9fa;">
+  <div class="container" style="margin-top: 100px;">
+
+      <div class="row justify-content-center">
+          <div class="col-md-6"> <!-- 1. Spalte mit Logo-->
+              <div class="card shadow mt-5" style="border-radius: 1rem; height: 85%; margin-right: -15px;"> <!-- height ändert die Höhe/Größe vom Logo-->
+                  <img src="{{ url_for('static', filename='img/logo.png') }}" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
+              </div>
+          </div>
+
+          <div class="col-md-6"><!-- 2. Spalte mit Login-->
+            <div class="card shadow mt-5" style="border-radius: 0 1rem 1rem 0; height: 85%; margin-left: -15px;">
+                  <div class="card-body p-4 p-lg-5">
+                      <form method="POST" action="/register">
+                          <div class="d-flex align-items-center mb-2">
+                              <span class="h1">Registrieren</span>
+                          </div>
+                          <div class="row mb-2"> <!-- erzeugt eine Reihe-->
+                            <div class="col-md-6"> <!-- erzeugt eine Spalte -->
+                                <input id="forename" name="forename" class="form-control form-control-lg" />
+                                <label class="form-label">Vorname</label>
+                            </div>
+                            <div class="col-md-6">    
+                              <input id="surname" name="surname" class="form-control form-control-lg" />
+                              <label class="form-label">Nachname</label>
+                            </div>
+                          </div>
+
+                          <div class="mb-2">
+                            <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                            <label class="form-label">Email Adresse</label>
+                            </div>
+
+                          <div class="mb-2">
+                              <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                              <label class="form-label">Passwort</label>
+                          </div>
+
+                          <div class="mb-2">
+                            <input type="password" id="password_confirm" name="password_confirm" class="form-control form-control-lg" />
+                            <label class="form-label">Passwort wiederholen</label>
+                         </div>
+
+                          <div class="mb-2">
+                              <button class="btn btn-dark btn-lg btn-block" type="submit" value="Register">Registrieren</button>
+                          </div>
+
+                          <p class="mb-4" style="color: rgb(4,0,59);">Haben Sie bereits ein Account ?<a href="{{ url_for('login') }}" style="color: rgb(4,0,59);">Hier Einloggen </a></p>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          <div class="flash-messages">
+              {% for message in messages %}
+              <div class="alert alert-warning" role="alert">
+                  {{message}}
+                 </div>
+              {% endfor %}
+          </div>
+      {% endif %}
+      {% endwith %}
+  </div>
+
+</body>
+</html>
